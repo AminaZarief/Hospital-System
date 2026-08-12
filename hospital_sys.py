@@ -50,7 +50,36 @@ class Hospital:
                for patient in patients:
                     print(patient)
 
-    def get_next_patient(self):...
+    def get_next_patient(self):
+        spec = get_valid_input('Enter Specialization ',1, NUMBER_OF_SPECIALIZATIONS)
+        for s, patients in enumerate(self.patients_lst):
+            if spec == s+1:
+                if len(patients) == 0:
+                    print('No patients at the moment. Have rest, Dr')
+                else:
+                    for patient in patients:
+                        if patient.status == 2:
+                            print(patient)
+                            patients.remove(patient)
+                            return
+                    
+                    
+                    for patient in patients:
+                        if patient.status == 1:
+                            print(patient)
+                            patients.remove(patient)
+                            return
+                    
+                    for patient in patients:
+                        if patient.status == 0:
+                            print(patient)
+                            patients.remove(patient)
+                            return
+                        
+                    
+                    
+
+
 
 
 if __name__ == '__main__':

@@ -40,6 +40,7 @@ class Hospital:
 
         # step3 add patient 
         self.patients_lst[specialization-1].append(patient)
+        
 
     def print_all_patients(self):
         
@@ -52,30 +53,14 @@ class Hospital:
 
     def get_next_patient(self):
         spec = get_valid_input('Enter Specialization ',1, NUMBER_OF_SPECIALIZATIONS)
-        for s, patients in enumerate(self.patients_lst):
-            if spec == s+1:
-                if len(patients) == 0:
-                    print('No patients at the moment. Have rest, Dr')
-                else:
-                    for patient in patients:
-                        if patient.status == 2:
-                            print(patient)
-                            patients.remove(patient)
-                            return
-                    
-                    
-                    for patient in patients:
-                        if patient.status == 1:
-                            print(patient)
-                            patients.remove(patient)
-                            return
-                    
-                    for patient in patients:
-                        if patient.status == 0:
-                            print(patient)
-                            patients.remove(patient)
-                            return
-                        
+        self.patients_lst[spec-1] = sorted(self.patients_lst[spec-1], key =lambda patient: patient.status, reverse=True)
+        
+        if len(self.patients_lst[spec-1]) == 0:
+            print('No patients at the moment. Have rest, Dr')
+        else:
+            print(f'{self.patients_lst[spec-1][0].name}, Please go with Dr')
+            self.patients_lst[spec-1].pop(0)
+            
                     
                     
 

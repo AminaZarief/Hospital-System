@@ -1,3 +1,4 @@
+
 def get_valid_input(prompt, min_val, max_val):
     """Reusable method for getting validated integer input"""
     while True:
@@ -47,7 +48,7 @@ class Hospital:
         
         for idx, patients in enumerate(self.patients_lst):
            if len(patients) > 0:
-               print(f'Specialization {idx + 1}: There are {len(patients)} patients.')
+               print(f'\n\nSpecialization {idx + 1}: There are {len(patients)} patients.')
                for patient in patients:
                     print(patient)
 
@@ -68,14 +69,16 @@ class Hospital:
 
 
 if __name__ == '__main__':
+    from test_data import hospital_patients_lst
     hospital = Hospital()
+    hospital.patients_lst = hospital_patients_lst
     while True:
-        print('Program Options:')
+        print('\nProgram Options:')
         print('1) Add new patients')
         print('2) print all patients')
         print('3) Get next patient')
         print('4) Remove a leaving patient')
-        print('5) End the progeam')
+        print('5) End the progeam\n')
 
         choice = int(input('Enter your choice(from 1 to 5): '))
         if choice == 1:

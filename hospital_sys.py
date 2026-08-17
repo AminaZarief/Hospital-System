@@ -65,7 +65,17 @@ class Hospital:
             print(f'{self.patients_lst[spec-1][0].name}, Please go with Dr')
             self.patients_lst[spec-1].pop(0)
             
-                    
+    def remove_leaving_patient(self):
+        spec = get_valid_input('Enter Specialization ',1, NUMBER_OF_SPECIALIZATIONS)
+        name = input('Enter patient name: ') 
+        for patient in self.patients_lst[spec-1]:
+            if patient.name == name:
+                self.patients_lst[spec-1].remove(patient)
+                return
+            
+        print('no such a person')
+
+
                     
 
 
@@ -90,6 +100,8 @@ if __name__ == '__main__':
             hospital.print_all_patients()
         elif choice == 3: 
             hospital.get_next_patient()
+        elif choice == 4: 
+            hospital.remove_leaving_patient()
         elif choice == 5:
             break
         else:

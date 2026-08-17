@@ -38,7 +38,10 @@ class Hospital:
         
         # step2 create patient obj 
         patient = Patient(name, status, specialization)
-
+        # check number of patients 
+        if len(self.patients_lst[specialization -1]) == 10:
+            print("Sorry we can't add more patients for this sepc")
+            return 
         # step3 add patient 
         self.patients_lst[specialization-1].append(patient)
         
